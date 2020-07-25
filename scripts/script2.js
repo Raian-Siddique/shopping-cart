@@ -1,16 +1,25 @@
 function getElement(id) {
     return document.getElementById(id);
 }
+// get elements
 const plusPhoneButton = getElement("phonePlus");
 const minusPhoneButton = getElement("phoneMinus");
 const plusCaseButton = getElement("casePlus");
 const minusCaseButton = getElement("caseMinus");
 
+function changeTotal() {
+    var total_first = getElement("total_first");
+    var total_second = getElement("total_second");
+    let iphoneValue = getElement("iphoneValue");
+    let caseValue = getElement("caseValue");
 
-
-
-
-
+    total_first.innerText = (parseInt(iphoneValue.innerText.replace("$", "")) + parseInt(caseValue.innerText.replace("$", ""))).toLocaleString();
+    total_first.innerText = "$" + total_first.innerText;
+    total_second.innerText = (parseInt(iphoneValue.innerText.replace("$", "")) + parseInt(caseValue.innerText.replace("$", ""))).toLocaleString();
+    total_second.innerText = "$" + total_second.innerText;
+}
+// phone
+// add event listener
 plusPhoneButton.addEventListener('click', function () {
     const iphoneCount = getElement("iphoneInput");
     let iphoneCountNum = parseInt(iphoneCount.value);
@@ -21,6 +30,7 @@ plusPhoneButton.addEventListener('click', function () {
     iphoneValue.innerText = "$" + iphoneTotal;
     changeTotal();
 })
+
 minusPhoneButton.addEventListener('click', function () {
     const iphoneCount = getElement("iphoneInput");
     let iphoneCountNum = parseInt(iphoneCount.value);
@@ -30,6 +40,7 @@ minusPhoneButton.addEventListener('click', function () {
         let iphoneValue = getElement("iphoneValue");
         let iphoneTotal = iphoneCountNum * 1219;
         iphoneValue.innerText = "$" + iphoneTotal;
+
     }
     changeTotal();
 
@@ -60,16 +71,3 @@ minusCaseButton.addEventListener('click', function () {
     }
     changeTotal();
 })
-
-function changeTotal() {
-    var subtotal = getElement("subtotal");
-    var total = getElement("total");
-    let iphoneValue = getElement("iphoneValue");
-    let caseValue = getElement("caseValue");
-
-    subtotal.innerText = (parseInt(iphoneValue.innerText.replace("$", "")) + parseInt(caseValue.innerText.replace("$", "")));
-    subtotal.innerText = "$" + subtotal.innerText;
-    total.innerText = (parseInt(iphoneValue.innerText.replace("$", "")) + parseInt(caseValue.innerText.replace("$", "")));
-    total.innerText = "$" + total.innerText;
-
-}
